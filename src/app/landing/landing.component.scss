@@ -1,11 +1,22 @@
+$a-width: 10%;
+
+@keyframes loginPop {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+
+}
+
 .container {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
 
-    margin-inline: 20%;
-    margin-bottom: 10%;
+    margin-bottom: 2rem;
     padding-top: 10%;
 }
 
@@ -13,4 +24,31 @@ h1 {
     color: white;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
+    font-size: 3em;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+    background-color: white;
+    padding: .5rem;
+    margin-top: 2%;
+    border-radius: 5px;
+
+    width: $a-width;
+    animation: loginPop 0.5s ease-in-out alternate infinite;
+
+}
+
+a:hover {
+    animation: none;
+    scale: 1.05;
 }

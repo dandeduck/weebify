@@ -15,10 +15,10 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
     this.spotify.setToken('BQAYvDooKrA18aSfuwo5DPHXt7nNrGvmXmSfYkZGQ2E-vFcUqagHOtqsY5_hBjBy3tljHkD_FBaTwdJzMrS3ffrRyW8l1IjWtp7ekI13jjfEFE2_Hmm9alczAPJh4-Yhav6CaHRwr0Nss3_YHMCqXGbs3DM-MgD5ayoGPWVwhRk');
     
-    this.spotify.requestTimeAdjustedScore().subscribe(score => console.log(score));
-    this.spotify.requestScoreForTopTracks(TimeRange.LONG).subscribe(score => console.log(score));
-    this.spotify.requestScoreForTopTracks(TimeRange.MEDIUM).subscribe(score => console.log(score));
-    this.spotify.requestScoreForTopTracks(TimeRange.SHORT).subscribe(score => console.log(score));
+    // this.spotify.requestTimeAdjustedScore().subscribe(score => console.log(score));
+    // this.spotify.requestScoreForTopTracks(TimeRange.LONG).subscribe(score => console.log(score));
+    // this.spotify.requestScoreForTopTracks(TimeRange.MEDIUM).subscribe(score => console.log(score));
+    // this.spotify.requestScoreForTopTracks(TimeRange.SHORT).subscribe(score => console.log(score));
   }
 
   authUrl() : string {
