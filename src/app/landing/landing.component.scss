@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    margin-inline: 20%;
+    margin-bottom: 10%;
+    padding-top: 10%;
+}
+
+h1 {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
