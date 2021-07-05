@@ -14,10 +14,9 @@ import { Track } from './track';
 
 export class SpotifyService {
   private clientId = '900e245255804dca9adc46985c8befcf';
-  private redirectUri = 'http://localhost:4200/';
+  private redirectUri = 'http://localhost:4200/weebinator';
   private token = '';
   private WEABU_GENRES : string[] = ['anime', 'j-pop', 'j-rock', 'otacore', 'jpop', 'j-rock', 'anime rock', 'j-poprock', 'j pop', 'okinawan pop'];
-  private EULER_MASCHERONI_CONSTANT = 0.57721566490;
   
   constructor(private http: HttpClient) {
   }
@@ -53,7 +52,7 @@ export class SpotifyService {
     let mediumScrore = this.requestScoreForTopTracks(TimeRange.MEDIUM);
     let shortScore = this.requestScoreForTopTracks(TimeRange.SHORT);
 
-    return combineLatest(longScore, mediumScrore, shortScore)
+    return combineLatest([longScore, mediumScrore, shortScore])
       .pipe(
         map(scores => this.calcScoreFromSummables(scores))
       );
@@ -104,6 +103,7 @@ export class SpotifyService {
 
   private calcScore(summedScore : number, amountOfItems : number) {
     let devisor = 0;
+    
     for (let i = 1; i <= amountOfItems; ++i)
       devisor += 1/i;
 

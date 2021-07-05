@@ -7,6 +7,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { ResultsComponent } from './results/results.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,17 +18,18 @@ import { ResultsComponent } from './results/results.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 70,
       subtitle: 'weeb',
-      subtitleColor: "white",
+      subtitleColor: "#ffb6c1",
       subtitleFontSize: "1rem",
       outerStrokeWidth: 8,
       unitsFontWeight: "bold",
       subtitleFontWeight: "bold",
-      outerStrokeColor: "white",
-      innerStrokeColor: "#ffb6c1",
+      outerStrokeColor: "#ffb6c1",
+      innerStrokeColor: "white",
       animationDuration: 1000,
       
     })

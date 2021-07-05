@@ -1,3 +1,27 @@
 <div class="container">
-    <circle-progress [percent]="85"></circle-progress>
+    <div class="results-container">
+        <h1>results:</h1>
+        <div class="main-results-container">
+            <h1 class="total">total -</h1>
+            <circle-progress *ngIf="weightedScore | async as score" [percent]="score" [outerStrokeColor]="'#1DB954'"></circle-progress>
+        </div>
+        <div class="secondary-results-container">
+            <div class="secondary-result">
+                <h1 class="secondary">last few years</h1>
+                <circle-progress *ngIf="longScore | async as score" [percent]="score" [radius]="50"></circle-progress>
+            </div>
+            <div class="secondary-result">
+                <h1 class="secondary">last year</h1>
+                <circle-progress *ngIf="mediumScore | async as score" [percent]="score" [radius]="50"></circle-progress>
+            </div>
+            <div class="secondary-result">
+                <h1 class="secondary">last month</h1>
+                <circle-progress *ngIf="shortScore | async as score" [percent]="score" [radius]="50"></circle-progress>
+            </div>
+        </div>
+    </div>
+    <div class="logout-div">
+        <a class="logout" routerLink='/login' routerLinkActive='active'>back</a>
+    </div>
 </div>
+<router-outlet></router-outlet>
