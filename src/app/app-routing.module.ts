@@ -5,7 +5,8 @@ import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
     { path: 'weebinator', component: ResultsComponent },
-    { path: 'login', component: LandingComponent}
+    { path: 'login', component: LandingComponent},
+    { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

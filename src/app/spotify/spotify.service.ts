@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { combineLatest, Observable, Subscriber, zip } from 'rxjs';
-import { map, mergeMap, subscribeOn } from 'rxjs/operators';
+import { combineLatest, Observable, zip } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { Artist } from './artist';
 import { Datapoint } from './datapoint';
 import { TimeRange } from './timeRange';

@@ -3,7 +3,7 @@
         <h1>results:</h1>
         <div class="main-results-container">
             <h1 class="total">total -</h1>
-            <circle-progress *ngIf="weightedScore | async as score" [percent]="score" [outerStrokeColor]="'#1DB954'"></circle-progress>
+            <circle-progress *ngIf="weightedScore | async as score" [percent]="score" [outerStrokeColor]="'#1DB954'" [subtitleFontSize]="'1.3rem'"></circle-progress>
         </div>
         <div class="secondary-results-container">
             <div class="secondary-result">
