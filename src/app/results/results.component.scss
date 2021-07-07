@@ -3,8 +3,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
     justify-content: space-between;
+
+    font-size: 3vw;
 }
 
 .results-container {
@@ -22,7 +23,7 @@
 }
 
 .total {
-    font-size: 2.5rem;
+    font-size: 2.5em;
 }
 
 .secondary-results-container {
@@ -30,16 +31,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    flex-direction: column;
 }
 
 .secondary-result {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-bottom: 0;
 }
 
 .secondary {
-    font-size: 2rem;
+    font-size: 2em;
+
 }
 
 .logout-div {
@@ -50,10 +56,28 @@
 
 .logout {
     color: #1DB954;
-    font-size: 3rem;
+    font-size: 3em;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-style: italic;
     text-decoration: none;
+}
+
+.result {
+    scale: 1vw;
+}
+
+@media (min-width: 640px) {
+    .container {
+        font-size: 1rem;
+    }
+
+    .secondary-results-container {
+        flex-direction: row;
+    }
+
+    .result {
+        scale: 1;
+    }
 }

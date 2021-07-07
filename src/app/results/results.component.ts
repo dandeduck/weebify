@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SpotifyService } from '../spotify/spotify.service';
@@ -12,10 +11,10 @@ import { TimeRange } from '../spotify/timeRange';
 })
 
 export class ResultsComponent implements OnInit {
-  weightedScore: Observable<number> = of(0);
-  longScore: Observable<number> = of(0);
-  mediumScore: Observable<number> = of(0);
-  shortScore: Observable<number> = of(0);
+  weightedScore = 0;
+  longScore = 0;
+  mediumScore = 0;
+  shortScore = 0;
 
   constructor(private spotify: SpotifyService) { }
 
@@ -26,7 +25,7 @@ export class ResultsComponent implements OnInit {
 
   private setToken(): void {
     const token = window.location.hash.split('&')[0].slice(1).split('=')[1];
-    // this.clearUrl();
+    this.clearUrl();
 
     if (token)
       this.spotify.setToken(token);
@@ -35,13 +34,13 @@ export class ResultsComponent implements OnInit {
   }
   
   private clearUrl(): void {
-    window.history.replaceState({}, document.title, "/weebinator");
+    window.history.replaceState({}, document.title, "/");
   }
 
   private setProgressCircles(): void {
-    this.weightedScore = this.spotify.requestTimeAdjustedScore().pipe(map(score => score*100));
-    this.longScore =  this.spotify.requestScoreForTopTracks(TimeRange.LONG).pipe(map(score => score*100));
-    this.mediumScore =  this.spotify.requestScoreForTopTracks(TimeRange.MEDIUM).pipe(map(score => score*100));
-    this.shortScore = this.spotify.requestScoreForTopTracks(TimeRange.SHORT).pipe(map(score => score*100));
+    this.spotify.requestTimeAdjustedScore().subscribe(score => this.weightedScore = score * 100);
+    this.spotify.requestScoreForTopTracks(TimeRange.LONG).subscribe(score => this.longScore = score * 100);
+    this.spotify.requestScoreForTopTracks(TimeRange.MEDIUM).subscribe(score => this.mediumScore = score * 100);
+    this.spotify.requestScoreForTopTracks(TimeRange.SHORT).subscribe(score => this.shortScore = score * 100);
   }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { combineLatest, Observable, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { clientId, redirectUri } from 'src/environments/environment';
 import { Artist } from './artist';
 import { Datapoint } from './datapoint';
 import { TimeRange } from './timeRange';
@@ -13,8 +14,6 @@ import { Track } from './track';
 })
 
 export class SpotifyService {
-  private clientId = '900e245255804dca9adc46985c8befcf';
-  private redirectUri = 'http://localhost:4200/weebinator';
   private token = '';
   private WEABU_GENRES : string[] = ['anime', 'j-pop', 'j-rock', 'otacore', 'jpop', 'j-rock', 'anime rock', 'j-poprock', 'j pop', 'okinawan pop'];
   
@@ -24,9 +23,9 @@ export class SpotifyService {
   public authUrl() : string {
     return 'https://accounts.spotify.com/authorize' +
       '?response_type=token' +
-      '&client_id=' + this.clientId +
+      '&client_id=' + clientId +
       '&scope=' + 'user-top-read' +
-      '&redirect_uri=' + this.redirectUri +
+      '&redirect_uri=' + redirectUri +
       '&show_dialog=' + 'true';
   }
 
@@ -134,7 +133,7 @@ export class SpotifyService {
 
     return this.request(url)
       .pipe(
-        map((data : any) => data.artists.map(this.convertItemToArtist))
+        map((data : any) => {console.log(data); return data.artists.map(this.convertItemToArtist)})
       );
   }
   
