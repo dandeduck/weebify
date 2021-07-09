@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const clientId = '900e245255804dca9adc46985c8befcf';
+export const clientId = '16e4e0402ff84c02b37ad8ac4d277ccc';
 export const redirectUri = 'http://localhost:4200/weebinator';
 
 /*
