@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { SpotifyService } from '../spotify/spotify.service';
 import { TimeRange } from '../spotify/timeRange';
 
@@ -30,7 +28,7 @@ export class ResultsComponent implements OnInit {
     if (token)
       this.spotify.setToken(token);
     else
-      window.location.replace('/');
+      window.location.replace('/login');
   }
   
   private clearUrl(): void {
