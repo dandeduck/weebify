@@ -133,7 +133,7 @@ export class SpotifyService {
 
     return this.request(url)
       .pipe(
-        map((data : any) => {console.log(data); return data.artists.map(this.convertItemToArtist)})
+        map((data : any) => data.artists.map(this.convertItemToArtist))
       );
   }
   
