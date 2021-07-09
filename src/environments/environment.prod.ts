@@ -3,4 +3,4 @@ export const environment = {
 };
 
 export const clientId = '16e4e0402ff84c02b37ad8ac4d277ccc';
-export const redirectUri = 'http://weebify.xyz/weebinator';
+export const redirectUri = 'https://weebify.xyz/weebinator';
