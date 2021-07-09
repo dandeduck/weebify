@@ -1,0 +1,47 @@
+@keyframes loginPop {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 2rem;
+    padding-top: 10%;
+}
+
+.logo {
+    width: 175px;
+    height: auto;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    margin-top: 2%;
+    animation: loginPop 0.5s ease-in-out alternate infinite;
+    
+}
+
+.logo-container {
+    width: auto;
+    height:  auto;
+    animation: loginPop 0.5s ease-in-out alternate infinite;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+// @media (min-width: 6)

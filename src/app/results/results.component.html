@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="results-container">
+        <h1>results:</h1>
+        <div class="main-results-container">
+            <h1 class="total">total</h1>
+            <circle-progress class="result" [percent]="weightedScore" [outerStrokeColor]="'#1DB954'" [subtitleFontSize]="'1.3rem'"></circle-progress>
+        </div>
+        <div class="secondary-results-container">
+            <div class="secondary-result">
+                <h1 class="secondary">last few years</h1>
+                <circle-progress class="result" [percent]="longScore" [radius]="50"></circle-progress>
+            </div>
+            <div class="secondary-result">
+                <h1 class="secondary">last year</h1>
+                <circle-progress class="result" [percent]="mediumScore" [radius]="50"></circle-progress>
+            </div>
+            <div class="secondary-result">
+                <h1 class="secondary">last month</h1>
+                <circle-progress class="result" [percent]="shortScore" [radius]="50"></circle-progress>
+            </div>
+        </div>
+    </div>
+    <div class="logout-div">
+        <a class="logout" routerLink='/login' routerLinkActive='active'>back</a>
+    </div>
+</div>
+<router-outlet></router-outlet>
