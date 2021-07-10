@@ -6,6 +6,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { clientId, redirectUri } from 'src/environments/environment';
 import { Artist } from './artist';
 import { Datapoint } from './datapoint';
+import { Scores } from './scores';
 import { TimeRange } from './timeRange';
 import { Track } from './track';
 
@@ -46,18 +47,27 @@ export class SpotifyService {
     return data.name.match(/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/);
   }
 
-  public requestTimeAdjustedScore() : Observable<number>{
+  public requestScores() : Observable<Scores>{
     let longScore = this.requestScoreForTopTracks(TimeRange.LONG);
     let mediumScrore = this.requestScoreForTopTracks(TimeRange.MEDIUM);
     let shortScore = this.requestScoreForTopTracks(TimeRange.SHORT);
 
     return combineLatest([longScore, mediumScrore, shortScore])
       .pipe(
-        map(scores => this.calcScoreFromSummables(scores))
+        map(scores => this.combineScores(scores[0], scores[1], scores[1]))
       );
   }
 
-  public requestScoreForTopTracks(range : TimeRange) : Observable<number> {
+  private combineScores(long: number, medium: number, short: number) : Scores {
+    return {
+      long: long * 100,
+      medium: medium * 100,
+      short: short * 100,
+      weighted: this.calcScoreFromSummables([long, medium, short]) * 100
+    }
+  }
+
+  private requestScoreForTopTracks(range : TimeRange) : Observable<number> {
     let tracks = this.requestTopTracks(range);
     let artists = tracks.pipe(mergeMap(data => this.requestArtists(data)));
 
