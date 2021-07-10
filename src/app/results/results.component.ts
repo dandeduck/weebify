@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Scores } from '../spotify/scores';
 import { SpotifyService } from '../spotify/spotify.service';
 import { TimeRange } from '../spotify/timeRange';
 
@@ -9,10 +10,12 @@ import { TimeRange } from '../spotify/timeRange';
 })
 
 export class ResultsComponent implements OnInit {
-  weightedScore = 0;
-  longScore = 0;
-  mediumScore = 0;
-  shortScore = 0;
+  scores : Scores = {
+    long: 0,
+    medium: 0,
+    short: 0,
+    weighted: 0
+  };
 
   constructor(private spotify: SpotifyService) { }
 
@@ -36,9 +39,7 @@ export class ResultsComponent implements OnInit {
   }
 
   private setProgressCircles(): void {
-    this.spotify.requestTimeAdjustedScore().subscribe(score => this.weightedScore = score * 100);
-    this.spotify.requestScoreForTopTracks(TimeRange.LONG).subscribe(score => this.longScore = score * 100);
-    this.spotify.requestScoreForTopTracks(TimeRange.MEDIUM).subscribe(score => this.mediumScore = score * 100);
-    this.spotify.requestScoreForTopTracks(TimeRange.SHORT).subscribe(score => this.shortScore = score * 100);
+    this.spotify.requestScores().subscribe(scores => this.scores = scores);
   }
+
 }
