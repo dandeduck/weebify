@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Scores } from '../spotify/scores';
 import { SpotifyService } from '../spotify/spotify.service';
-import { TimeRange } from '../spotify/timeRange';
 
 @Component({
   selector: 'app-results',
